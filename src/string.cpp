@@ -160,20 +160,25 @@ bool String::operator<=(String s) const {
 bool String::operator>=(String s) const {
     return !(*this < s);
 }
-
-String String::operator+(String s) const {
-    String temp(size() + s.size());
-    strcpy(temp.buf, buf);
-    strcat(temp.buf, s.buf);
-    return temp;
-}
-
-String& String::operator+=(String s) {
-    char* new_buf = new char[size() + s.size() + 1];
+String String::operator+(const String& s) const {
+    size_t new_length = strlen(buf) + strlen(s.buf);
+    char* new_buf = new char[new_length + 1]; // +1 for null-terminator
     strcpy(new_buf, buf);
     strcat(new_buf, s.buf);
-    delete[] buf;
-    buf = new_buf;
+
+    String result;
+    result.buf = new_buf;
+    return result; 
+} 
+
+String& String::operator+=(const String& s) {
+    size_t new_length = strlen(buf) + strlen(s.buf);
+    char* new_buf = new char[new_length + 1]; 
+    strcpy(new_buf, buf); 
+    strcat(new_buf, s.buf); 
+
+    delete[] buf; 
+    buf = new_buf; 
     return *this;
 }
 
