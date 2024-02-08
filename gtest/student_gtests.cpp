@@ -1,75 +1,60 @@
+#include <gtest/gtest.h>
+#include <string.h>
+
+#include <algorithm>
+
 #include "string.hpp"
-#include "gtest/gtest.h"
+#include "alloc.hpp"
 
 TEST(StringFunction, strlen) {
-    const char* str = "Hello";
-    ASSERT_EQ(String::strlen(str), 5);
+    EXPECT_EQ(String::strlen(""), 0);
+    EXPECT_EQ(String::strlen("foo"), 3);
 }
 
 TEST(StringFunction, strcpy) {
-    const char* src = "Hello";
-    char dest[10];
-    String::strcpy(dest, src);
-    ASSERT_STREQ(dest, "Hello");
+    char result[10];
+    EXPECT_EQ(String::strcpy(result, "foo"), result);
+    EXPECT_STREQ(result, "foo");
+
+    EXPECT_EQ(String::strcpy(result, "a"), result);
+    EXPECT_STREQ(result, "a");
+
+    EXPECT_EQ(String::strcpy(result, ""), result);
+    EXPECT_STREQ(result, "");
 }
 
 TEST(StringFunction, strdup) {
-    const char* source = "Hello, world!";
-    char* duplicated = String::strdup(source);
-    
-    ASSERT_NE(duplicated, nullptr);
-    
-    ASSERT_STREQ(duplicated, source);
-    
-    std::free(duplicated);
+    EXPECT_TRUE(false);
 }
 
 TEST(StringFunction, strncpy) {
-    const char* src = "Hello";
-    char dest[10];
-    String::strncpy(dest, src, 3);
-    ASSERT_STREQ(dest, "Hel");
+    EXPECT_TRUE(false);
 }
 
 TEST(StringFunction, strcat) {
-    char dest[10] = "Hello";
-    const char* src = ", world!";
-    String::strcat(dest, src);
-    ASSERT_STREQ(dest, "Hello, world!");
+    EXPECT_TRUE(false);
 }
 
 TEST(StringFunction, strncat) {
-    char dest[15] = "Hello";
-    const char* src = ", world!";
-    String::strncat(dest, src, 3);
-    ASSERT_STREQ(dest, "Hello, w");
+    EXPECT_TRUE(false);
 }
 
 TEST(StringFunction, strcmp) {
-    const char* str1 = "Hello";
-    const char* str2 = "Hello";
-    ASSERT_EQ(String::strcmp(str1, str2), 0);
+    EXPECT_TRUE(false);
 }
 
 TEST(StringFunction, strncmp) {
-    const char* str1 = "Hello";
-    const char* str2 = "Hello";
-    ASSERT_EQ(String::strncmp(str1, str2, 3), 0);
+    EXPECT_TRUE(false);
 }
 
 TEST(StringFunction, reverse_cpy) {
-    const char* src = "Hello";
-    char dest[10];
-    String::reverse_cpy(dest, src);
-    ASSERT_STREQ(dest, "olleH");
+    EXPECT_TRUE(false);
 }
 
 TEST(StringFunction, strchr) {
-    const char* str = "Hello";
-    ASSERT_STREQ(String::strchr(str, 'e'), "ello");
+    EXPECT_TRUE(false);
 }
 
 TEST(StringFunction, strstr) {
-    const char* str = "Hello, world!";
-    ASSERT_STREQ(String::strstr(str, "world"), "world!");
+    EXPECT_TRUE(false);
 }
